@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-animation">
+                    <span class="logo-accent">Portfolio</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#showcase" class="nav-link">Showcase</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="certificates.html" class="nav-link">Certificates</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-btn" onclick="toggleThemePanel()">
+                    <i class="fas fa-magic"></i>
+                </button>
+                <button class="nav-btn" onclick="toggleFullscreen()">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button class="nav-btn" onclick="resetWelcomePopup()" title="Reset Welcome Popup">
+                    <i class="fas fa-home"></i>
+                </button>
+                <button class="nav-btn mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav-menu" id="mobileNavMenu">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                <li><a href="index.html#showcase" class="mobile-nav-link">Showcase</a></li>
+                <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
+                <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+                <li><a href="certificates.html" class="mobile-nav-link">Certificates</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Projects Header -->
+    <section class="projects-header">
+        <div class="container">
+            <h1>All Projects</h1>
+            <p>Explore my complete portfolio of projects across different domains</p>
+            
+            <!-- Project Categories -->
+            <div class="project-categories">
+                <button class="category-btn active" data-category="all">All Projects</button>
+                <button class="category-btn" data-category="hardware">Hardware</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Scroll Section -->
+    <section class="projects-scroll">
+        <div class="container">
+            <div class="projects-container">
+                <!-- Project 1: Home Automation System -->
+                <div class="project-card" data-category="hardware">
+                    <div class="project-image">
+                        <img src="images/home-automation.jpg" alt="Home Automation System" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="fallback-icon" style="display: none;">
+                            <i class="fas fa-home"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Home Automation System</h3>
+                        <p>Smart home automation system built with Arduino and C++ programming. Controls lighting, temperature, and security systems.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">IoT</span>
+                            <span class="tech-tag">Hardware</span>
+                        </div>
+                        <button class="project-detail-btn" onclick="openProjectDemo('homeautomation')">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2: Self Balancing Car -->
+                <div class="project-card" data-category="hardware">
+                    <div class="project-image">
+                        <img src="images/self-balancing-car.jpg" alt="Self Balancing Car" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="fallback-icon" style="display: none;">
+                            <i class="fas fa-car"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Self Balancing Car</h3>
+                        <p>Autonomous self-balancing vehicle using Raspberry Pi Pico and MicroPython. Features PID control and sensor fusion.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Raspberry Pi</span>
+                            <span class="tech-tag">MicroPython</span>
+                            <span class="tech-tag">Robotics</span>
+                            <span class="tech-tag">PID Control</span>
+                        </div>
+                        <button class="project-detail-btn" onclick="openProjectDemo('selfbalancing')">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3: Hand Gesture Control Car -->
+                <div class="project-card" data-category="hardware">
+                    <div class="project-image">
+                        <img src="images/gesture-car.jpg" alt="Hand Gesture Control Car" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="fallback-icon" style="display: none;">
+                            <i class="fas fa-hand-paper"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Hand Gesture Control Car</h3>
+                        <p>Gesture-controlled robotic car using Raspberry Pi Pico and MicroPython. Features computer vision for hand gesture recognition and wireless control.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Raspberry Pi</span>
+                            <span class="tech-tag">MicroPython</span>
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">Gesture Control</span>
+                        </div>
+                        <button class="project-detail-btn" onclick="openProjectDemo('gesturecar')">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Get In Touch</h3>
+                    <p>Ready to start a project or have questions? Let's connect!</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#skills">Skills</a></li>
+                        <li><a href="index.html#showcase">Projects</a></li>
+                        <li><a href="certificates.html">Certificates</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Portfolio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

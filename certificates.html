@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Verma - Professional Certifications</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="cosmic" data-mode="dark">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-animation">
+                    <span class="logo-accent">Portfolio</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#showcase" class="nav-link">Showcase</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="certificates.html" class="nav-link">Certificates</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-btn" onclick="toggleThemePanel()">
+                    <i class="fas fa-magic"></i>
+                </button>
+                <button class="nav-btn" onclick="toggleFullscreen()">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button class="nav-btn" onclick="resetWelcomePopup()" title="Reset Welcome Popup">
+                    <i class="fas fa-home"></i>
+                </button>
+                <button class="nav-btn mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav-menu" id="mobileNavMenu">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                <li><a href="index.html#showcase" class="mobile-nav-link">Showcase</a></li>
+                <li><a href="index.html#about" class="mobile-nav-link">About</a></li>
+                <li><a href="index.html#contact" class="mobile-nav-link">Contact</a></li>
+                <li><a href="certificates.html" class="mobile-nav-link">Certificates</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Theme Switcher Panel -->
+    <div class="theme-panel" id="themePanel">
+        <div class="theme-header">
+            <h3>🎨 Theme Studio</h3>
+            <button class="close-panel" onclick="toggleThemePanel()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="theme-options">
+            <div class="theme-category">
+                <h4>Visual Themes</h4>
+                <div class="theme-grid">
+                    <button class="theme-btn" data-theme="cosmic">Cosmic</button>
+                    <button class="theme-btn" data-theme="neon">Neon</button>
+                    <button class="theme-btn" data-theme="minimal">Minimal</button>
+                    <button class="theme-btn" data-theme="retro">Retro</button>
+                </div>
+            </div>
+            <div class="theme-category">
+                <h4>Color Mode</h4>
+                <div class="mode-toggle">
+                    <button class="mode-btn" data-mode="light">☀️ Light</button>
+                    <button class="mode-btn" data-mode="dark">🌙 Dark</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Background Geometry -->
+    <div class="geometry-background">
+        <canvas id="geometryCanvas"></canvas>
+        <div class="geometry-overlay"></div>
+    </div>
+
+    <div class="certificates-page">
+        <div class="certificates-header">
+            <h1>Professional Certifications</h1>
+            <p>Here are all the professional certifications I've earned to validate my skills and expertise.</p>
+        </div>
+        
+        <div class="certificates-grid">
+            <div class="certificate-item">
+                <div class="certificate-header">
+                    <div class="certificate-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="certificate-info">
+                        <h2 class="certificate-title">Hands on Arduino</h2>
+                        <p class="certificate-issuer">Udemy (2024)</p>
+                    </div>
+                </div>
+                <div class="certificate-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                    <span class="progress-text">Completed</span>
+                </div>
+                <div class="certificate-actions">
+                    <button class="certificate-btn primary" onclick="viewCertificate('arduino')">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                    <button class="certificate-btn secondary" onclick="downloadCertificate('arduino')">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+            
+            <div class="certificate-item">
+                <div class="certificate-header">
+                    <div class="certificate-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="certificate-info">
+                        <h2 class="certificate-title">ADCA</h2>
+                        <p class="certificate-issuer">Parul Computer Institute of Technology (2022)</p>
+                    </div>
+                </div>
+                <div class="certificate-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                    <span class="progress-text">Completed</span>
+                </div>
+                <div class="certificate-actions">
+                    <button class="certificate-btn primary" onclick="viewCertificate('adca')">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                    <button class="certificate-btn secondary" onclick="downloadCertificate('adca')">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+            
+            <div class="certificate-item">
+                <div class="certificate-header">
+                    <div class="certificate-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="certificate-info">
+                        <h2 class="certificate-title">Programming in C</h2>
+                        <p class="certificate-issuer">Programming Fundamentals (2025)</p>
+                    </div>
+                </div>
+                <div class="certificate-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                    <span class="progress-text">Completed</span>
+                </div>
+                <div class="certificate-actions">
+                    <button class="certificate-btn primary" onclick="viewCertificate('cprogramming')">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                    <button class="certificate-btn secondary" onclick="downloadCertificate('cprogramming')">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+            
+            <div class="certificate-item">
+                <div class="certificate-header">
+                    <div class="certificate-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="certificate-info">
+                        <h2 class="certificate-title">Introduction to Tableau</h2>
+                        <p class="certificate-issuer">Data Visualization (2025)</p>
+                    </div>
+                </div>
+                <div class="certificate-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                    <span class="progress-text">Completed</span>
+                </div>
+                <div class="certificate-actions">
+                    <button class="certificate-btn primary" onclick="viewCertificate('tableau')">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                    <button class="certificate-btn secondary" onclick="downloadCertificate('tableau')">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+            
+            <div class="certificate-item">
+                <div class="certificate-header">
+                    <div class="certificate-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="certificate-info">
+                        <h2 class="certificate-title">Six-Sigma</h2>
+                        <p class="certificate-issuer">Quality Management (2024)</p>
+                    </div>
+                </div>
+                <div class="certificate-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                    <span class="progress-text">Completed</span>
+                </div>
+                <div class="certificate-actions">
+                    <button class="certificate-btn primary" onclick="viewCertificate('sixsigma')">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                    <button class="certificate-btn secondary" onclick="downloadCertificate('sixsigma')">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+            
+            <div class="certificate-item">
+                <div class="certificate-header">
+                    <div class="certificate-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="certificate-info">
+                        <h2 class="certificate-title">Internship Certificate</h2>
+                        <p class="certificate-issuer">Professional Experience (2024)</p>
+                    </div>
+                </div>
+                <div class="certificate-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                    <span class="progress-text">Completed</span>
+                </div>
+                <div class="certificate-actions">
+                    <button class="certificate-btn primary" onclick="viewCertificate('internship')">
+                        <i class="fas fa-eye"></i> View
+                    </button>
+                    <button class="certificate-btn secondary" onclick="downloadCertificate('internship')">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-to-portfolio">
+            <a href="index.html#about" class="back-btn">Back to Portfolio</a>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Initialize theme system for certificates page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Apply saved theme and mode
+            const savedTheme = localStorage.getItem('theme') || 'cosmic';
+            const savedMode = localStorage.getItem('mode') || 'dark';
+            
+            document.body.setAttribute('data-theme', savedTheme);
+            document.body.setAttribute('data-mode', savedMode);
+            
+            // Update theme buttons
+            const themeBtns = document.querySelectorAll('.theme-btn');
+            themeBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.theme === savedTheme) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update mode buttons
+            const modeBtns = document.querySelectorAll('.mode-btn');
+            modeBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.mode === savedMode) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Add event listeners to theme buttons
+            themeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const theme = btn.dataset.theme;
+                    applyTheme(theme);
+                });
+            });
+            
+            // Add event listeners to mode buttons
+            modeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const mode = btn.dataset.mode;
+                    applyMode(mode);
+                });
+            });
+            
+            // Initialize geometry background
+            initGeometryBackground();
+        });
+
+        // Theme application functions
+        function applyTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            
+            // Update theme buttons
+            const themeBtns = document.querySelectorAll('.theme-btn');
+            themeBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.theme === theme) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Recreate geometry background with new theme
+            initGeometryBackground();
+        }
+
+        function applyMode(mode) {
+            document.body.setAttribute('data-mode', mode);
+            localStorage.setItem('mode', mode);
+            
+            // Update mode buttons
+            const modeBtns = document.querySelectorAll('.mode-btn');
+            modeBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.mode === mode) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        function viewCertificate(certType) {
+            // You can replace these with actual PDF URLs or implement a modal to display certificates
+            const certificateUrls = {
+                'arduino': 'certificates/arduino-certificate.pdf',
+                'adca': 'certificates/adca-certificate.pdf',
+                'cprogramming': 'certificates/c-programming-certificate.pdf',
+                'tableau': 'certificates/tableau-certificate.pdf',
+                'sixsigma': 'certificates/sixsigma-certificate.pdf',
+                'internship': 'certificates/internship-certificate.pdf'
+            };
+            
+            const url = certificateUrls[certType];
+            if (url) {
+                // Open PDF in new tab
+                window.open(url, '_blank');
+            } else {
+                alert(`Viewing ${certType} certificate. Upload your PDF to implement this feature.`);
+            }
+        }
+        
+        function downloadCertificate(certType) {
+            // You can replace these with actual PDF download URLs
+            const certificateUrls = {
+                'arduino': 'certificates/arduino-certificate.pdf',
+                'adca': 'certificates/adca-certificate.pdf',
+                'cprogramming': 'certificates/c-programming-certificate.pdf',
+                'tableau': 'certificates/tableau-certificate.pdf',
+                'sixsigma': 'certificates/sixsigma-certificate.pdf',
+                'internship': 'certificates/internship-certificate.pdf'
+            };
+            
+            const url = certificateUrls[certType];
+            if (url) {
+                // Create download link
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `${certType}-certificate.pdf`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                alert(`Downloading ${certType} certificate. Upload your PDF to implement this feature.`);
+            }
+        }
+
+        // Theme panel toggle
+        function toggleThemePanel() {
+            const themePanel = document.getElementById('themePanel');
+            themePanel.classList.toggle('active');
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileNavMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Fullscreen toggle
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Reset welcome popup
+        function resetWelcomePopup() {
+            localStorage.removeItem('hasShownWelcome');
+            window.location.href = 'index.html';
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Initialize geometry background
+        function initGeometryBackground() {
+            const canvas = document.getElementById('geometryCanvas');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            let canvasWidth = window.innerWidth;
+            let canvasHeight = window.innerHeight;
+            
+            // Set canvas size
+            canvas.width = canvasWidth;
+            canvas.height = canvasHeight;
+            
+            // Create geometry nodes
+            const nodes = [];
+            const nodeCount = Math.min(100, Math.floor((canvasWidth * canvasHeight) / 20000));
+            
+            for (let i = 0; i < nodeCount; i++) {
+                nodes.push({
+                    x: Math.random() * canvasWidth,
+                    y: Math.random() * canvasHeight,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2 + 0.5,
+                    opacity: Math.random() * 0.3 + 0.1
+                });
+            }
+            
+            // Animation loop
+            function animate() {
+                ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+                
+                // Update and draw nodes
+                nodes.forEach(node => {
+                    // Update position
+                    node.x += node.vx;
+                    node.y += node.vy;
+                    
+                    // Bounce off edges
+                    if (node.x <= 0 || node.x >= canvasWidth) node.vx *= -1;
+                    if (node.y <= 0 || node.y >= canvasHeight) node.vy *= -1;
+                    
+                    // Draw node
+                    ctx.save();
+                    ctx.globalAlpha = node.opacity;
+                    ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--cosmic-accent-primary');
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                });
+                
+                // Draw connections
+                ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--cosmic-accent-primary');
+                ctx.lineWidth = 0.5;
+                ctx.globalAlpha = 0.2;
+                
+                for (let i = 0; i < nodes.length; i++) {
+                    for (let j = i + 1; j < nodes.length; j++) {
+                        const distance = Math.sqrt(
+                            Math.pow(nodes[i].x - nodes[j].x, 2) + 
+                            Math.pow(nodes[i].y - nodes[j].y, 2)
+                        );
+                        
+                        if (distance < 150) {
+                            ctx.beginPath();
+                            ctx.moveTo(nodes[i].x, nodes[i].y);
+                            ctx.lineTo(nodes[j].x, nodes[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                
+                ctx.globalAlpha = 1;
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+            
+            // Handle resize
+            window.addEventListener('resize', () => {
+                canvasWidth = window.innerWidth;
+                canvasHeight = window.innerHeight;
+                canvas.width = canvasWidth;
+                canvas.height = canvasHeight;
+            });
+        }
+    </script>
+</body>
+</html>

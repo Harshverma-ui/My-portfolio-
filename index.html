@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Verma's Portfolio </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="cosmic" data-mode="light">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="logo-circle"></div>
+                <div class="logo-text">HV</div>
+            </div>
+            <div class="loading-text">Initializing Portfolio...</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Welcome Theme Setup Popup -->
+    <div class="welcome-popup" id="welcomePopup">
+        <div class="welcome-content">
+            <div class="welcome-header">
+                <h2>🎨 Welcome to My Portfolio!</h2>
+                <p>Let's personalize your experience. Choose your preferred theme and color mode to get started.</p>
+            </div>
+            
+            <div class="welcome-theme-section">
+                <h3>Choose Your Visual Theme</h3>
+                <div class="welcome-theme-grid">
+                    <div class="welcome-theme-option" data-theme="cosmic">
+                        <div class="theme-preview cosmic-preview"></div>
+                        <span>Cosmic</span>
+                        <small>Ethereal & Mysterious</small>
+                    </div>
+                    <div class="welcome-theme-option" data-theme="neon">
+                        <div class="theme-preview neon-preview"></div>
+                        <span>Neon</span>
+                        <small>Vibrant & Electric</small>
+                    </div>
+                    <div class="welcome-theme-option" data-theme="minimal">
+                        <div class="theme-preview minimal-preview"></div>
+                        <span>Minimal</span>
+                        <small>Clean & Simple</small>
+                    </div>
+                    <div class="welcome-theme-option" data-theme="retro">
+                        <div class="theme-preview retro-preview"></div>
+                        <span>Retro</span>
+                        <small>Classic & Warm</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="welcome-mode-section">
+                <h3>Choose Your Color Mode</h3>
+                <div class="welcome-mode-toggle">
+                    <div class="welcome-mode-option" data-mode="light">
+                        <div class="mode-preview light-preview"></div>
+                        <span>☀️ Light Mode</span>
+                        <small>Bright & Airy</small>
+                    </div>
+                    <div class="welcome-mode-option" data-mode="dark">
+                        <div class="mode-preview dark-preview"></div>
+                        <span>🌙 Dark Mode</span>
+                        <small>Deep & Immersive</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="welcome-actions">
+                <button class="welcome-btn primary" onclick="applyWelcomeSettings()">
+                    <i class="fas fa-rocket"></i>
+                    Start Exploring
+                </button>
+                <button class="welcome-btn secondary" onclick="skipWelcomeSetup()">
+                    <i class="fas fa-magic"></i>
+                    Use Default (Cosmic Dark)
+                </button>
+            </div>
+            
+            <div class="welcome-footer">
+                <small>You can always change themes later using the palette button in the top right!</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Switcher Panel -->
+    <div class="theme-panel" id="themePanel">
+        <div class="theme-header">
+            <h3>🎨 Theme Studio</h3>
+            <button class="close-panel" onclick="toggleThemePanel()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="theme-options">
+            <div class="theme-category">
+                <h4>Visual Themes</h4>
+                <div class="theme-grid">
+                    <button class="theme-btn active" data-theme="cosmic">Cosmic</button>
+                    <button class="theme-btn" data-theme="neon">Neon</button>
+                    <button class="theme-btn" data-theme="minimal">Minimal</button>
+                    <button class="theme-btn" data-theme="retro">Retro</button>
+                </div>
+            </div>
+            <div class="theme-category">
+                <h4>Color Modes</h4>
+                <div class="mode-toggle">
+                    <button class="mode-btn active" data-mode="light">☀️ Light</button>
+                    <button class="mode-btn" data-mode="dark">🌙 Dark</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Interactive Background Geometry -->
+    <div class="geometry-background">
+        <canvas id="geometryCanvas"></canvas>
+        <div class="geometry-overlay"></div>
+    </div>
+
+    <!-- Floating Theme Button -->
+    <button class="floating-theme-btn" onclick="toggleThemePanel()">
+        <i class="fas fa-palette"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-animation">
+                    <span class="logo-accent">Portfolio</span>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link">Home</a></li>
+                <li><a href="#showcase" class="nav-link">Showcase</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-btn" onclick="toggleThemePanel()">
+                    <i class="fas fa-magic"></i>
+                </button>
+                <button class="nav-btn" onclick="toggleFullscreen()">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button class="nav-btn" onclick="resetWelcomePopup()" title="Reset Welcome Popup">
+                    <i class="fas fa-home"></i>
+                </button>
+                <button class="nav-btn mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav-menu" id="mobileNavMenu">
+            <ul class="mobile-nav-list">
+                <li><a href="#hero" class="mobile-nav-link">Home</a></li>
+                <li><a href="#showcase" class="mobile-nav-link">Showcase</a></li>
+                <li><a href="#about" class="mobile-nav-link">About</a></li>
+                <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background">
+            <div class="floating-elements">
+                <div class="floating-element" data-speed="0.5"></div>
+                <div class="floating-element" data-speed="0.8"></div>
+                <div class="floating-element" data-speed="1.2"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line"> I am </span>
+                    <span class="title-main">Harsh Verma </span>
+                    <span class="title-subtitle">The Engineer </span>
+                </h1>
+                <p class="hero-description">
+                    This isn't just a portfolio—it's an interactive experience that demonstrates 
+                    my skills in real-time. Every element you see is a testament to modern web development.
+                </p>
+                <div class="hero-actions">
+                    <button class="hero-btn primary" onclick="scrollToSection('showcase')">
+                        Explore Projects
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="interactive-demo">
+                    <div class="demo-header">
+                        <span class="demo-dot red"></span>
+                        <span class="demo-dot yellow"></span>
+                        <span class="demo-dot green"></span>
+                        <span class="demo-title">Live Demo</span>
+                    </div>
+                    <div class="demo-content">
+                        <div class="code-line">
+                            <span class="code-keyword">const</span> 
+                            <span class="code-variable">portfolio</span> = 
+                            <span class="code-string">'interactive'</span>;
+                        </div>
+                        <div class="code-line">
+                            <span class="code-keyword">if</span> (
+                            <span class="code-variable">visitor</span>.<span class="code-property">engaged</span>) {
+                        </div>
+                        <div class="code-line">
+                            &nbsp;&nbsp;<span class="code-variable">portfolio</span>.<span class="code-property">evolve</span>();
+                        </div>
+                        <div class="code-line">}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Showcase -->
+    <section class="showcase" id="showcase">
+        <div class="container">
+            <h2 class="section-title">Project Showcase</h2>
+                         <div class="showcase-controls">
+                 <button class="control-btn active" data-filter="all">All</button>
+                 <button class="control-btn" data-filter="hardware">Hardware</button>
+                 <button class="control-btn" data-filter="web">Web Development</button>
+                 <button class="control-btn" data-filter="others">Others</button>
+             </div>
+            <div class="showcase-grid">
+                <!-- Main Project 1: Home Automation System -->
+                <div class="showcase-item" data-category="hardware">
+                    <div class="item-preview">
+                        <div class="preview-image">
+                            <img src="images/home-automation.jpg" alt="Home Automation System" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-icon" style="display: none;">
+                                <i class="fas fa-home"></i>
+                            </div>
+                        </div>
+                        <div class="preview-overlay">
+                            <button class="preview-btn" onclick="openProjectDemo('homeautomation')">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="item-content">
+                        <h3>Home Automation System</h3>
+                        <p>Smart home automation system built with Arduino and C++ programming</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Arduino</span>
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">IoT</span>
+                            <span class="tech-tag">Hardware</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Project 2: Self Balancing Car -->
+                <div class="showcase-item" data-category="hardware">
+                    <div class="item-preview">
+                        <div class="preview-image">
+                            <img src="images/self-balancing-car.jpg" alt="Self Balancing Car" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-icon" style="display: none;">
+                                <i class="fas fa-car"></i>
+                            </div>
+                        </div>
+                        <div class="preview-overlay">
+                            <button class="preview-btn" onclick="openProjectDemo('selfbalancing')">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="item-content">
+                        <h3>Self Balancing Car</h3>
+                        <p>Autonomous self-balancing vehicle using Raspberry Pi Pico and MicroPython</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Raspberry Pi</span>
+                            <span class="tech-tag">MicroPython</span>
+                            <span class="tech-tag">Robotics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Project 3: Portfolio Website -->
+                <div class="showcase-item" data-category="web">
+                    <div class="item-preview">
+                        <div class="preview-image">
+                            <img src="images/portfolio-website.jpg" alt="Portfolio Website" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="fallback-icon" style="display: none;">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                        </div>
+                        <div class="preview-overlay">
+                            <button class="preview-btn" onclick="openProjectDemo('portfolio')">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                    <div class="item-content">
+                        <h3>Interactive Portfolio Website</h3>
+                        <p>Modern, responsive portfolio website with interactive themes and animations</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Responsive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- View All Projects Button -->
+            <div class="showcase-actions">
+                <a href="projects.html" class="view-all-btn">
+                    <span>View All Projects</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About the Developer</h2>
+            <div class="about-content">
+                       <div class="about-photo-section">
+           <div class="about-photo">
+               <img src="images/profile-photo.jpg" alt="Harsh Verma" id="profilePhoto">
+           </div>
+       </div>
+                <div class="about-text">
+                    <div class="about-intro">
+                        <h3>Hi, I'm Harsh Verma</h3>
+                        <p class="about-role">Software Engineer & Web Developer</p>
+                    </div>
+                    <p>
+                        I am a B.Tech student in Computer Science Engineering, actively building skills in key areas of coding and technology, 
+                        with a particular interest in Web Development. I bring a reliable, team-oriented mindset, and I take pride in being 
+                        accountable and consistent in both individual and collaborative tasks.
+                    </p>
+                    <p>
+                        Currently pursuing my Bachelor's degree at Manav Rachna University, I'm passionate about creating innovative solutions 
+                        and continuously learning new technologies to enhance my development skills.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="5">0</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="6">0</span>
+                            <span class="stat-label">Certifications</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="6">0</span>
+                            <span class="stat-label">Programming Languages</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificates Button -->
+                    <div class="certificates-button-section">
+                        <button class="certificates-btn primary" onclick="openCertificatesPage()">
+                            <i class="fas fa-certificate"></i>
+                            Click to View Certificates
+                        </button>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="skill-demonstrator">
+                        <div class="skill-circle">
+                            <div class="skill-progress" data-skill="python" data-value="65"></div>
+                            <div class="skill-label">Python</div>
+                        </div>
+                        <div class="skill-circle">
+                            <div class="skill-progress" data-skill="webdev" data-value="70"></div>
+                            <div class="skill-label">HTML, CSS, JavaScript</div>
+                        </div>
+                        <div class="skill-circle">
+                            <div class="skill-progress" data-skill="cpp" data-value="75"></div>
+                            <div class="skill-label">C/C++</div>
+                        </div>
+                        <div class="skill-circle">
+                            <div class="skill-progress" data-skill="applications" data-value="80"></div>
+                            <div class="skill-label">Applications</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Build Something Amazing</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                                         <div class="contact-item">
+                         <i class="fas fa-envelope"></i>
+                         <span>harsh19verma1987@gmail.com</span>
+                     </div>
+                     <div class="contact-item">
+                         <i class="fas fa-phone"></i>
+                         <span>+91 7982377124</span>
+                     </div>
+                     <div class="contact-item">
+                         <i class="fas fa-map-marker-alt"></i>
+                         <span>H-117 A Harkesh Nager, New Delhi</span>
+                     </div>
+                     <div class="social-links">
+                         <a href="https://github.com/Harshverma-ui" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                         <a href="http://www.linkedin.com/in/harsh-verma-2076a034a" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                         <a href="mailto:harsh19verma1987@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                         <a href="tel:+917982377124" class="social-link"><i class="fas fa-phone"></i></a>
+                     </div>
+                </div>
+                <div class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="contactName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="contactEmail" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="contactMessage" placeholder="Tell me about your project..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" onclick="submitContactForm()">
+                        Send Message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Demo Modal -->
+    <div class="demo-modal" id="demoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="demoTitle">Project Demo</h3>
+                <button class="modal-close" onclick="closeProjectDemo()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="demo-frame">
+                    <img id="demoImage" src="" alt="Project Demo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                </div>
+                <div class="demo-info">
+                    <h4 id="demoProjectTitle">Project Title</h4>
+                    <p id="demoDescription">Project description will appear here.</p>
+                    <div class="demo-actions">
+                        <a href="#" class="demo-link" id="liveSiteLink" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Live Site
+                        </a>
+                        <a href="#" class="demo-link" id="sourceCodeLink" target="_blank">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Living Portfolio</h4>
+                    <p>Where code meets creativity and innovation meets interaction.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#showcase">Projects</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                                 <div class="footer-section">
+                     <h4>Connect</h4>
+                     <div class="footer-social">
+                         <a href="https://github.com/Harshverma-ui" target="_blank"><i class="fab fa-github"></i></a>
+                         <a href="http://www.linkedin.com/in/harsh-verma-2076a034a" target="_blank"><i class="fab fa-linkedin"></i></a>
+                         <a href="mailto:harsh19verma1987@gmail.com"><i class="fas fa-envelope"></i></a>
+                         <a href="tel:+917982377124"><i class="fas fa-phone"></i></a>
+                     </div>
+                 </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Harsh Verma . All rights reserved. | Built with modern web technologies</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
